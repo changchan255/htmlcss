@@ -227,7 +227,18 @@
       </section>
       <!-- Culture & Events Section -->
       <section class="culture-section">
-         <h2 class="culture-heading">Văn hóa - Sự kiện</h2>
+         <div class="culture-header">
+            <h2 class="culture-heading">Văn hóa - Sự kiện</h2>
+
+            <div class="culture-controls">
+               <button class="culture-btn culture-btn--prev">
+                  <i class="fas fa-chevron-left"></i>
+               </button>
+               <button class="culture-btn culture-btn--next">
+                  <i class="fas fa-chevron-right"></i>
+               </button>
+            </div>
+         </div>
          <div class="culture-news">
             <ul class="culture-news__grid">
                <li class="culture-news__item">
@@ -287,6 +298,26 @@
                      </div>
                   </div>
                </li>
+               <li class="culture-news__item">
+                  <div class="culture-news__image">
+                     <img src="https://news.sun-asterisk.com/images/440x248/f8e7e84c-29f1-4cbd-b2a3-263d42578a10.png" alt="K8S Server">
+                  </div>
+                  <div class="culture-news__content">
+                     <h6 class="culture-news__title">
+                        <a href="https://news.sun-asterisk.com/vi/p/chinh-phuc-chung-chi-cka-2024-cung-huu-kim-rd-kich-tinh-va-nhieu-kinh-nghiem-xuong-mau-bXb1WexDMOD" target="_blank" rel="noopener">Chinh phục chứng chỉ CKA 2024 cùng Hữu Kim (R&D): "Kịch tính và nhiều kinh nghiệm xương máu"</a>
+                     </h6>
+                     <div class="culture-news__preview">Sunner Hữu Kim (R&D) vừa trải qua hành trình thi chứng chỉ CKA (Certified Kubernetes Administrator) trong năm 2024. Nhắc đến cuộc thi này, kịch tính và nhiều bài học xương máu là những gì Kim ấn tượng nhất. CKA là một trong số 3 chứng chỉ phổ biến về Kubernetes bao gồm: CKAD, CKA và CKS. Hãy cùng theo dõi kinh nghiệm chinh phục chứng chỉ CKA của Hữu Kim ngay dưới đây!</div>
+                     <div class="culture-news__btn-detail">
+                        <a href="https://news.sun-asterisk.com/vi/p/chinh-phuc-chung-chi-cka-2024-cung-huu-kim-rd-kich-tinh-va-nhieu-kinh-nghiem-xuong-mau-bXb1WexDMOD" target="_blank" rel="nofollow noopener" class="culture-news__link">
+                        Xem chi tiết
+                        <span class="culture-news__link-icon">
+                        <i class="fas fa-arrow-right"></i>
+                        </span>
+                        </a>
+                     </div>
+                  </div>
+               </li>
+               
             </ul>
             <div class="culture-news__btn-more">
                <a class="culture-news__btn-all" href="https://news.sun-asterisk.com/vi" target="_blank" rel="noopener">
@@ -454,6 +485,28 @@
      header.classList.remove("header--scrolled");
    }
    });
+
+   const grid = document.querySelector(".culture-news__grid");
+const items = document.querySelectorAll(".culture-news__item");
+const nextBtn = document.querySelector(".culture-btn--next");
+const prevBtn = document.querySelector(".culture-btn--prev");
+
+let index = 0;
+const itemWidth = items[0].offsetWidth;
+
+nextBtn.addEventListener("click", () => {
+    if (index < items.length - 3) {
+        index++;
+        grid.style.transform = `translateX(-${index * itemWidth}px)`;
+    }
+});
+
+prevBtn.addEventListener("click", () => {
+    if (index > 0) {
+        index--;
+        grid.style.transform = `translateX(-${index * itemWidth}px)`;
+    }
+});
    
    //   const navToggle = document.getElementById("navToggle");
    //   const navMenu = document.getElementById("navMenu");
