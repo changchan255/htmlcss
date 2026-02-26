@@ -57,7 +57,7 @@
       <video src="https://sun-asterisk.vn/wp-content/uploads/2020/11/mv-pc.mp4" autoplay="" muted="" webkit-playsinline="" playsinline="" loop=""></video>
    </section>
 
-   <main class="main-section">
+   <main>
       <!-- Business Section -->
       <section class="business-section">
          <div class="container mx-auto px-4">
@@ -152,6 +152,15 @@
                      </a>
                   </div>
                </div>
+               <div class="project-controls">
+                  <button class="slide-btn slide-btn--prev">
+                     <i class="fas fa-chevron-left"></i>
+                  </button>
+                  <button class="slide-btn slide-btn--next">
+                     <i class="fas fa-chevron-right"></i>
+                  </button>
+               </div>
+         </div>
             </div>
          </div>
       </section>
@@ -231,10 +240,10 @@
             <h2 class="culture-heading">Văn hóa - Sự kiện</h2>
 
             <div class="culture-controls">
-               <button class="culture-btn culture-btn--prev">
+               <button class="slide-btn slide-btn--prev culture-btn--prev">
                   <i class="fas fa-chevron-left"></i>
                </button>
-               <button class="culture-btn culture-btn--next">
+               <button class="slide-btn slide-btn--next culture-btn--next">
                   <i class="fas fa-chevron-right"></i>
                </button>
             </div>
@@ -486,25 +495,28 @@
    }
    });
 
-   const grid = document.querySelector(".culture-news__grid");
+const grid = document.querySelector(".culture-news__grid");
 const items = document.querySelectorAll(".culture-news__item");
 const nextBtn = document.querySelector(".culture-btn--next");
 const prevBtn = document.querySelector(".culture-btn--prev");
 
 let index = 0;
-const itemWidth = items[0].offsetWidth;
+function getItemWidth() {
+    const gap = parseInt(window.getComputedStyle(grid).gap) || 0;
+    return items[0].offsetWidth + gap;
+}
 
 nextBtn.addEventListener("click", () => {
     if (index < items.length - 3) {
         index++;
-        grid.style.transform = `translateX(-${index * itemWidth}px)`;
+        grid.style.transform = `translateX(-${index * getItemWidth()}px)`;
     }
 });
 
 prevBtn.addEventListener("click", () => {
     if (index > 0) {
         index--;
-        grid.style.transform = `translateX(-${index * itemWidth}px)`;
+        grid.style.transform = `translateX(-${index * getItemWidth()}px)`;
     }
 });
    
